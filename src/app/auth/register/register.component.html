@@ -1,1 +1,49 @@
-<p>register works!</p>
+<section>
+  <mat-card>
+    <mat-card-title>Sign-Up</mat-card-title>
+    <mat-card-content>
+      <form>
+        <mat-form-field appearance="outline">
+          <mat-label>Username</mat-label>
+          <input matInput placeholder="Enter your username">
+
+          <mat-error>
+            Nombre de usuario no disponible
+          </mat-error>
+
+      </mat-form-field >
+
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input matInput placeholder="Enter your Email">
+
+          <mat-error>
+            Email ya registrado o no valido
+          </mat-error>
+
+      </mat-form-field >
+
+      <mat-form-field appearance="outline">
+        <mat-label>Password</mat-label>
+        <input matInput placeholder="Enter your password">
+
+        <mat-error>
+          Password not valid
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Confirm Password</mat-label>
+        <input matInput placeholder="Enter your password">
+
+        <mat-error>
+          Password not valid
+        </mat-error>
+      </mat-form-field>
+      <button mat-raised-button color="primary" type="submit">Sign-Up</button>
+    </form>
+
+  </mat-card-content>
+
+
+</mat-card>
+</section>

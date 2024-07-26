@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../../services/auth.service';
+import { HttpClient } from '@angular/common/http';
+import { User } from '../../interfaces/user.interfaces';
 
 @Component({
   selector: 'app-login',
@@ -7,4 +10,7 @@ import { Component } from '@angular/core';
 })
 export class LoginComponent {
 
+
+
+  
 }
