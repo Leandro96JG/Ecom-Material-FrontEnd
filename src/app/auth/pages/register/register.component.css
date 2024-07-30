@@ -1,0 +1,59 @@
+section{
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgb(203,123,181);
+  background: radial-gradient(circle, rgba(203,123,181,1) 91%, rgba(184,142,178,1) 100%);
+}
+
+mat-card-title{
+  text-align: center;
+}
+
+mat-card{
+  display: flex;
+  justify-content: space-evenly;
+  height: 65vh;
+  width: 50vh;
+  background-color: #FFD9E1;
+}
+
+mat-card-content{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+form{
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
+}
+
+
+mat-form-field{
+  width: 250px;
+  display: flex;
+}
+
+.button_register{
+  width: 150px
+}
+
+span{
+  color: #be1253;
+  font-size: small;
+  font-weight: 300;
+  cursor: pointer;
+}
+span:hover{
+  color: #4c0523;
+}
+
+.buttons{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+

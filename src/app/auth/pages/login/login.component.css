@@ -1,0 +1,52 @@
+section{
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgb(203,123,181);
+  background: radial-gradient(circle, rgba(203,123,181,1) 91%, rgba(184,142,178,1) 100%);
+}
+mat-card{
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 3rem;
+  height: 65vh;
+  width: 50vh;
+  background-color: #FFD9E1;
+}
+
+form{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+
+mat-form-field{
+  width:250px;
+  height:70px;
+  margin-top: 1rem;
+}
+
+
+.button_login{
+  width: 150px;
+}
+
+.buttons{
+  display: flex;
+  gap: 3rem;
+  align-items: center;
+}
+.title-signup{
+  color: #be1253;
+  font-size: small;
+  font-weight: 300;
+}
+
+.title-signup:hover{
+  color: #4c0523;
+  cursor: pointer;
+}
+

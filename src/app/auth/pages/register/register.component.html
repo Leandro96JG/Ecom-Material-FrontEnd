@@ -1,0 +1,77 @@
+<section>
+  <mat-card>
+    <!-- TITULO -->
+    <mat-card-title>Sing Up</mat-card-title>
+    <!-- FORMULARIO -->
+    <mat-card-content>
+      <form [formGroup]="myForm" (ngSubmit)="onSubmit()" autocomplete="off">
+        <mat-form-field appearance="outline">
+          <mat-label>Username</mat-label>
+          <input
+            matInput
+            placeholder="Enter your username"
+            formControlName="username"
+          />
+
+          <mat-error *ngIf="myForm.get('username')?.invalid && myForm.get('username')?.touched"> Nombre de usuario no disponible </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input
+            matInput
+            placeholder="Enter your Email"
+            formControlName="email"
+          />
+
+          <mat-error> Email ya registrado o no valido </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Password</mat-label>
+            <input
+            matInput
+            placeholder="Enter your password"
+            formControlName="password"
+            [type]="hidePassword"
+            />
+            <button mat-icon-button matSuffix (click)="togglePasswordVisibility()">
+              <mat-icon> {{ visibility ? 'visibility_off' : 'visibility'}} </mat-icon>
+            </button>
+
+        <!-- Componente icon visibility -->
+
+          <mat-error>Contraseña no valida</mat-error>
+        </mat-form-field>
+        
+        <mat-form-field appearance="outline">
+          <mat-label>Confirm Password</mat-label>
+          <input
+            [type]="hidePasswordConfirm"
+            matInput
+            placeholder="Enter your password"
+            formControlName="passwordConfirm"
+          />
+          <button mat-icon-button matSuffix (click)="togglePasswordConfirmVisibility()">
+            <mat-icon> {{ visibilityConfirm ? 'visibility_off' : 'visibility'}} </mat-icon>
+          </button>
+
+          <mat-error> Contraseña no coincide </mat-error>
+        </mat-form-field>
+      </form>
+    </mat-card-content>
+    <!-- BOTONES -->
+    <div class="buttons">
+      <span (click)="navigateLogin()">Ya tienes un usuario?</span>
+      <button
+        class="button_register"
+        mat-raised-button
+        color="primary"
+        [disabled]="myForm.invalid"
+        type="submit"
+      >
+        Registrarse
+      </button>
+    </div>
+  </mat-card>
+</section>

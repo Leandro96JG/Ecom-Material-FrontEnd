@@ -22,7 +22,7 @@ import { provideHttpClient, withFetch } from '@angular/common/http';
     provideClientHydration(),
     provideAnimationsAsync(),
     //Recordar importar esta miercole sino no andan las peticiones
-    provideHttpClient(withFetch())
+    provideHttpClient()
   ],
   bootstrap: [AppComponent]
 })

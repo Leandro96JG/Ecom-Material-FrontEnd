@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthRoutingModule } from './auth-routing.module';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
-import { HttpClient } from '@angular/common/http';
+import { LoginComponent } from './pages/login/login.component';
 import { MaterialModule } from '../material/material.module';
+
+import { RegisterComponent } from './pages/register/register.component';
+import { ComponentsModule } from './components/components.module';
 
 
 @NgModule({
@@ -17,6 +18,9 @@ import { MaterialModule } from '../material/material.module';
     CommonModule,
     AuthRoutingModule,
     MaterialModule,
+    ReactiveFormsModule,
+    FormsModule,
+    ComponentsModule
   ]
 })
 export class AuthModule { }
