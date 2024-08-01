@@ -2,6 +2,9 @@ import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ValidatorsService } from '../../services/validators/validators.service';
+import { AuthService } from '../../services/auth.service';
+import { CreateUser } from '../../interfaces/auth/create-user.interface';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 @Component({
@@ -15,6 +18,8 @@ export class RegisterComponent implements OnInit{
   private fb1 = inject(FormBuilder);
   private validatorService=inject(ValidatorsService);
   private router = inject(Router);
+  private authService = inject(AuthService);
+  private _snackBar = inject(MatSnackBar);
 
   public hidePassword:string = '';
   public hidePasswordConfirm:string = '';
@@ -50,7 +55,24 @@ export class RegisterComponent implements OnInit{
    }
  );
 
+ register(){
 
+  const {username,email,password} = this.myForm.value;
+  const createUser:CreateUser = {
+    username,
+    email,
+    password
+  }
+
+  this.authService.register(createUser).subscribe({
+    next:()=>{
+      this._snackBar.open("Sign up succesfull","close",{duration:4000})
+      this.router.navigateByUrl('/dashboard')
+    },
+    error:(err)=>console.log("observable:",err)
+  })
+
+}
 
 
 
@@ -74,9 +96,7 @@ togglePasswordConfirmVisibility(){
   }
 }
 
-  onSubmit() {
-    this.myForm.markAllAsTouched();
-  }
+
   navigateLogin(){
     this.router.navigateByUrl("/login");
   }

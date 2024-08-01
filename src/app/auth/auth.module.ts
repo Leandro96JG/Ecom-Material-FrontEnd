@@ -7,6 +7,7 @@ import { MaterialModule } from '../material/material.module';
 
 import { RegisterComponent } from './pages/register/register.component';
 import { ComponentsModule } from './components/components.module';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { ComponentsModule } from './components/components.module';
     MaterialModule,
     ReactiveFormsModule,
     FormsModule,
-    ComponentsModule
+    ComponentsModule,
+    
   ]
 })
 export class AuthModule { }

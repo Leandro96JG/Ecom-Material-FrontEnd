@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { tap } from 'rxjs';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-login',
@@ -14,6 +15,7 @@ export class LoginComponent implements OnInit{
   private fb = inject(FormBuilder);
   private router = inject(Router);
   private authService = inject(AuthService);
+  private _snackBar = inject(MatSnackBar);
 
   public visibility:boolean = true;
   public hidePassword:string = '';
@@ -34,7 +36,10 @@ export class LoginComponent implements OnInit{
       tap((value)=>console.log('Desde el observer',value))
     )
     .subscribe({
-      next:()=>this.router.navigateByUrl('/dashboard'),
+      next:()=>{
+        this._snackBar.open("Log in successfull",'Close',{duration:4000})
+        this.router.navigateByUrl('/dashboard')
+      },
       error: (message)=>{
         console.log("message",message);
       }

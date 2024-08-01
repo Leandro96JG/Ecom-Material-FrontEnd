@@ -4,7 +4,7 @@
     <mat-card-title>Sing Up</mat-card-title>
     <!-- FORMULARIO -->
     <mat-card-content>
-      <form [formGroup]="myForm" (ngSubmit)="onSubmit()" autocomplete="off">
+      <form [formGroup]="myForm" (ngSubmit)="register()" autocomplete="off">
         <mat-form-field appearance="outline">
           <mat-label>Username</mat-label>
           <input
@@ -43,7 +43,7 @@
 
           <mat-error>Contraseña no valida</mat-error>
         </mat-form-field>
-        
+
         <mat-form-field appearance="outline">
           <mat-label>Confirm Password</mat-label>
           <input
@@ -62,8 +62,9 @@
     </mat-card-content>
     <!-- BOTONES -->
     <div class="buttons">
-      <span (click)="navigateLogin()">Ya tienes un usuario?</span>
+      <a routerLink="/login">Ya tienes un usuario?</a>
       <button
+
         class="button_register"
         mat-raised-button
         color="primary"
