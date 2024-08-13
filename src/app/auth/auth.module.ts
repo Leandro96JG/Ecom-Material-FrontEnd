@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthRoutingModule } from './auth-routing.module';
 import { LoginComponent } from './pages/login/login.component';
-import { MaterialModule } from '../material/material.module';
+import { MaterialModule } from '../material-angular/material.module';
 
 import { RegisterComponent } from './pages/register/register.component';
 import { ComponentsModule } from './components/components.module';
@@ -22,7 +22,7 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
     FormsModule,
     ComponentsModule,
-    
+
   ]
 })
 export class AuthModule { }

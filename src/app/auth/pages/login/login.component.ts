@@ -38,10 +38,16 @@ export class LoginComponent implements OnInit{
     .subscribe({
       next:()=>{
         this._snackBar.open("Log in successfull",'Close',{duration:4000})
-        this.router.navigateByUrl('/dashboard')
+        if(this.authService.getRole()?.includes("ROLE_ADMIN")){
+          console.log(this.authService.getRole()?.includes("ROLE_ADMIN"));
+          this.router.navigateByUrl('/admin')
+        }else{
+          console.log(this.authService.getRole()?.includes("ROLE_ADMIN"));
+          this.router.navigateByUrl('/dashboard')
+        }
       },
       error: (message)=>{
-        console.log("message",message);
+        this._snackBar.open("Datos ingresados incorrectos","ERROR",{duration:4000});
       }
     })
   }

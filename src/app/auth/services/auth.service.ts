@@ -1,11 +1,11 @@
 import { HttpClient } from '@angular/common/http';
-import { computed, inject, Injectable, signal, WritableSignal } from '@angular/core';
-import { catchError, map, Observable, tap, throwError } from 'rxjs';
+import { computed, inject, Injectable, signal, WritableSignal, effect } from '@angular/core';
+import { catchError, map, Observable, of, tap, throwError } from 'rxjs';
 import { AuthStatus } from '../interfaces/auth/auth-status.enum';
 import { LoginResponse } from '../interfaces/auth/loginResponse.interface';
 import { CreateUser } from '../interfaces/auth/create-user.interface';
 import { RegisterResponse } from '../interfaces/auth/registerResponse.interface';
-
+import { jwtDecode } from 'jwt-decode'
 @Injectable({
   providedIn: 'root'
 })
@@ -16,12 +16,37 @@ export class AuthService{
 
   private _currentUser = signal<string|null>(null);
   private _authStatus = signal<AuthStatus>(AuthStatus.checking);
+  private token = '';
+  private static readonly TOKEN_KEY = 'token';
+  private static readonly USERNAME_KEY = 'username';
 
   public currentUser = computed(()=>this._currentUser());
   public authStatus = computed(()=> this._authStatus());
 
-  constructor(){
+  //Metodos para guardar y leer lo del localStorage
 
+  private saveToLocalStorage(key: string, value: string) {
+    localStorage.setItem(key, value);
+  }
+
+  private getFromLocalStorage(key: string): string | null {
+    return localStorage.getItem(key);
+  }
+
+  constructor(){
+    this.init();
+  }
+
+
+  public init() {
+    //Para solucionar problemas en el local storage
+    if(typeof window !== 'undefined'){
+      const token = this.getFromLocalStorage(AuthService.TOKEN_KEY);
+      const username = this.getFromLocalStorage(AuthService.USERNAME_KEY);
+      if (token && username) {
+        this.setAuthentication(username, token);
+      }
+    }
   }
 
   login(username:string, password:string):Observable<boolean>{
@@ -30,19 +55,22 @@ export class AuthService{
 
     return this.http.post<LoginResponse>(url,body)
     .pipe(
-      tap(({username}) => console.log(username)),
       map(({username,jwt})=>this.setAuthentication(username,jwt)),
 
       catchError(err =>
-        throwError(()=>console.log(err.error.message))
+        throwError(()=>err.message)
       )
     );
   }
 
   private setAuthentication(username:string , jwt:string):boolean{
+    this.token = jwt;
     this._currentUser.set(username);
     this._authStatus.set(AuthStatus.authenticated);
-    localStorage.setItem('token',jwt);
+
+    this.saveToLocalStorage(AuthService.TOKEN_KEY, jwt);
+    this.saveToLocalStorage(AuthService.USERNAME_KEY, username);
+
     return true;
   }
 
@@ -51,11 +79,43 @@ export class AuthService{
 
     return this.http.post<RegisterResponse>(url,createUser).pipe(
       map(({username,jwt})=>this.setAuthentication(username,jwt)),
-      catchError(err =>
-        throwError(()=> err.error.message )
+      catchError(err =>{
+        const errMessage = err.error.message;
+        return throwError(()=> errMessage)
+      }
       )
     )
   }
 
+
+  //Rol
+
+   getRole(){
+    const decodeToken = jwtDecode(this.token);
+    const roleString = decodeToken.authorities;
+    const claims = roleString?.split(',');
+    return claims?.filter(claim => claim.startsWith("ROLE"));
+  }
+
+  public logout(){
+    this.token ='';
+    this._currentUser.set(null);
+    this._authStatus.set(AuthStatus.checking);
+
+    localStorage.removeItem(AuthService.TOKEN_KEY);
+    localStorage.removeItem(AuthService.USERNAME_KEY);
+  }
+
+  //Check status
+
+  checkStatus():Observable<boolean>{
+    const token = this.getFromLocalStorage(AuthService.TOKEN_KEY);
+    if(!this.token){
+      this.logout();
+      return of(false);
+    }
+    return of(true);
+
+  }
 
 }

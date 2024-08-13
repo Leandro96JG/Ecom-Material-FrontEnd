@@ -69,7 +69,7 @@ export class RegisterComponent implements OnInit{
       this._snackBar.open("Sign up succesfull","close",{duration:4000})
       this.router.navigateByUrl('/dashboard')
     },
-    error:(err)=>console.log("observable:",err)
+    error:(err)=>this._snackBar.open(err,'ERROR',{duration: 4000})
   })
 
 }

@@ -21,17 +21,21 @@ export class AppComponent {
     return true;
   });
 
-  public authStatusChangedEffect = effect(()=>{
-    switch(this.authService.authStatus()){
-      case AuthStatus.checking:
-        return;
-      case AuthStatus.authenticated:
-        this.router.navigateByUrl('/dashboard');
-        return;
-      case AuthStatus.notAuthenticated:
-        this.router.navigateByUrl('/login');
-        return;
-    }
-  })
+  constructor(){
 
+  }
+
+//necesito que cambie en caso de que sea admin o user
+  public authStatusChangedEffect = effect(()=>{
+      switch(this.authService.authStatus()){
+        case AuthStatus.checking:
+          return;
+        case AuthStatus.authenticated:
+            this.router.navigateByUrl("/dashboard");
+          return;
+        case AuthStatus.notAuthenticated:
+          this.router.navigateByUrl('/login');
+          return;
+      }
+  })
 }

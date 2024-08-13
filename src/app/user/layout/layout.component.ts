@@ -11,5 +11,9 @@ export class LayoutComponent {
 
   public user = computed(()=>this.authService.currentUser())
 
+  logout(){
+    this.authService.logout();
+  }
+
 
 }
