@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { AuthService } from '../../auth/services/auth.service';
 
 @Component({
   selector: 'app-layout',
@@ -6,5 +7,12 @@ import { Component } from '@angular/core';
   styleUrl: './layout.component.css'
 })
 export class LayoutComponent {
+
+  private authService = inject(AuthService);
+
+
+  logout(){
+    this.authService.logout()
+  }
 
 }

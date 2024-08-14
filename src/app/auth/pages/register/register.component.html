@@ -35,9 +35,9 @@
             formControlName="password"
             [type]="hidePassword"
             />
-            <button mat-icon-button matSuffix (click)="togglePasswordVisibility()">
+            <div class="buttom-visibility" mat-icon-button matSuffix (click)="togglePasswordVisibility()">
               <mat-icon> {{ visibility ? 'visibility_off' : 'visibility'}} </mat-icon>
-            </button>
+            </div>
 
         <!-- Componente icon visibility -->
 
@@ -52,9 +52,9 @@
             placeholder="Enter your password"
             formControlName="passwordConfirm"
           />
-          <button mat-icon-button matSuffix (click)="togglePasswordConfirmVisibility()">
+          <div class="buttom-visibility" mat-icon-button matSuffix (click)="togglePasswordConfirmVisibility()">
             <mat-icon> {{ visibilityConfirm ? 'visibility_off' : 'visibility'}} </mat-icon>
-          </button>
+          </div>
 
           <mat-error> Contraseña no coincide </mat-error>
         </mat-form-field>
@@ -62,7 +62,7 @@
     </mat-card-content>
     <!-- BOTONES -->
     <div class="buttons">
-      <a routerLink="/login">Ya tienes un usuario?</a>
+      <a routerLink="/auth">Ya tienes un usuario?</a>
       <button
 
         class="button_register"

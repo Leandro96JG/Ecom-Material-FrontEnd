@@ -6,7 +6,8 @@ import { AppComponent } from './app.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material-angular/material.module';
-import { provideHttpClient, withFetch, withJsonpSupport } from '@angular/common/http';
+import { provideHttpClient, withFetch, withInterceptors, withJsonpSupport } from '@angular/common/http';
+import { AuthInterceptor } from './auth/interceptors/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,7 @@ import { provideHttpClient, withFetch, withJsonpSupport } from '@angular/common/
     provideClientHydration(),
     provideAnimationsAsync(),
     //Recordar importar esta miercole sino no andan las peticiones
-    provideHttpClient(withFetch())
+    provideHttpClient(withFetch(),withInterceptors([AuthInterceptor]))
   ],
   bootstrap: [AppComponent]
 })

@@ -1,1 +1,14 @@
-<p>Admin Page</p>
+<mat-toolbar color="tertiary" class="navbar">
+  <span class="navbar-brand">E-Commerce</span>
+  <span class="spacer"></span>
+    <button mat-button routerLink="dashboard" routerLinkActive="active">Dashboard</button>
+    <button mat-button routerLink="register" routerLinkActive="active">Register</button>
+    <button mat-button routerLink="category" routerLinkActive="active">Category</button>
+    <button mat-button routerLink="product" routerLinkActive="active">Product</button>
+    <button mat-button routerLink="orders" routerLinkActive="active">Orders</button>
+    <button mat-button routerLink="post-coupon" routerLinkActive="active">Post Coupon</button>
+    <button mat-button routerLink="counpons" routerLinkActive="active">Counpons</button>
+    <button mat-button routerLink="/auth" (click)="logout()">Logout</button>
+  </mat-toolbar>
+
+  <router-outlet></router-outlet>

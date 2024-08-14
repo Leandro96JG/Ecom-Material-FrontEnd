@@ -10,4 +10,5 @@ export class DashboardComponent {
   private authService = inject(AuthService);
 
   public user = this.authService.currentUser();
+  public status = this.authService.authStatus();
 }

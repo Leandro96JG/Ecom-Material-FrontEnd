@@ -15,7 +15,7 @@ export class AuthService{
   private http = inject(HttpClient);
 
   private _currentUser = signal<string|null>(null);
-  private _authStatus = signal<AuthStatus>(AuthStatus.checking);
+  private _authStatus = signal<AuthStatus>(AuthStatus.notAuthenticated);
   private token = '';
   private static readonly TOKEN_KEY = 'token';
   private static readonly USERNAME_KEY = 'username';
@@ -35,11 +35,13 @@ export class AuthService{
 
   constructor(){
     this.init();
+    this.checkStatus().subscribe()
   }
 
 
   public init() {
     //Para solucionar problemas en el local storage
+    this._authStatus.set(AuthStatus.checking)
     if(typeof window !== 'undefined'){
       const token = this.getFromLocalStorage(AuthService.TOKEN_KEY);
       const username = this.getFromLocalStorage(AuthService.USERNAME_KEY);
@@ -91,16 +93,20 @@ export class AuthService{
   //Rol
 
    getRole(){
-    const decodeToken = jwtDecode(this.token);
-    const roleString = decodeToken.authorities;
-    const claims = roleString?.split(',');
-    return claims?.filter(claim => claim.startsWith("ROLE"));
+
+      if(this.token === ''){
+        return
+      }
+      const decodeToken = jwtDecode(this.token);
+      const roleString = decodeToken.authorities;
+      const claims = roleString?.split(',');
+      return claims;
   }
 
   public logout(){
     this.token ='';
     this._currentUser.set(null);
-    this._authStatus.set(AuthStatus.checking);
+    this._authStatus.set(AuthStatus.notAuthenticated);
 
     localStorage.removeItem(AuthService.TOKEN_KEY);
     localStorage.removeItem(AuthService.USERNAME_KEY);
@@ -109,13 +115,19 @@ export class AuthService{
   //Check status
 
   checkStatus():Observable<boolean>{
-    const token = this.getFromLocalStorage(AuthService.TOKEN_KEY);
-    if(!this.token){
-      this.logout();
-      return of(false);
+    if(typeof window !== 'undefined'){
+      const token = this.getFromLocalStorage(AuthService.TOKEN_KEY);
+      if(!token){
+        this.logout();
+        return of(false);
+      }
     }
     return of(true);
 
+  }
+
+  public getToken(){
+    return this.getFromLocalStorage(AuthService.TOKEN_KEY);
   }
 
 }

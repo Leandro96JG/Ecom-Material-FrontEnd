@@ -1,0 +1,46 @@
+<section>
+
+  <mat-card>
+
+
+    <mat-card-content>
+      <mat-card-title>
+        New Category
+      </mat-card-title>
+      <form autocomplete="off" [formGroup]="myFormCategory" (ngSubmit)="addCategory()">
+
+        <mat-form-field>
+
+          <mat-label>Name</mat-label>
+          <input
+          formControlName="name"
+          type="name"
+          matInput
+          placeholder="Enter name"
+          >
+          <mat-error>Name not valid</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Description</mat-label>
+          <input
+          formControlName="description"
+          type="text"
+          matInput
+          placeholder="Add description"
+          >
+          <mat-error>Description not valid</mat-error>
+        </mat-form-field>
+        <button
+        mat-raised-button
+        type="submit"
+        color="primary"
+        [disabled]="myFormCategory.invalid">
+        Add Category
+        </button>
+      </form>
+    </mat-card-content>
+
+  </mat-card>
+
+</section>

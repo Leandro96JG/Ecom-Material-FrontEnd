@@ -8,12 +8,14 @@ import { MaterialModule } from '../material-angular/material.module';
 import { RegisterComponent } from './pages/register/register.component';
 import { ComponentsModule } from './components/components.module';
 import { HttpClientModule } from '@angular/common/http';
+import { LayoutComponent } from './layout/layout.component';
 
 
 @NgModule({
   declarations: [
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    LayoutComponent
   ],
   imports: [
     CommonModule,

@@ -13,6 +13,7 @@
           <input
             type="name"
             matInput
+            name="username"
             formControlName="username"
             placeholder="Enter your username"
           />
@@ -25,10 +26,12 @@
           <input
             [type]="hidePassword"
             matInput
+            name="password"
             formControlName="password"
             placeholder="Enter your password"
           />
-          <button
+          <div
+            class="buttom-visibility"
             mat-icon-button
             matSuffix
             (click)="togglePasswordVisibility()"
@@ -36,11 +39,11 @@
             <mat-icon>
               {{ visibility ? "visibility_off" : "visibility" }}
             </mat-icon>
-          </button>
+          </div>
           <mat-error> password not valid </mat-error>
         </mat-form-field>
         <div class="buttons">
-          <mat-card-title routerLink="/register" class="title-signup"
+          <mat-card-title routerLink="/auth/register" class="title-signup"
             >No estas registrado?</mat-card-title
           >
           <button
