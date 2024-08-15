@@ -1,0 +1,24 @@
+
+section{
+  display: flex;
+}
+
+
+mat-card{
+  width: 300px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 8px;
+}
+
+
+
+
+img{
+  width: 200px;
+  height: auto;
+}
+
+

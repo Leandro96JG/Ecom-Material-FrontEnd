@@ -8,6 +8,7 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { ProductComponent } from './pages/product/product.component';
 import { CategoryComponent } from './pages/category/category.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AddProductComponent } from './pages/add-product/add-product.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     LayoutComponent,
     DashboardComponent,
     ProductComponent,
-    CategoryComponent
+    CategoryComponent,
+    AddProductComponent
   ],
   imports: [
     CommonModule,
