@@ -1,24 +1,19 @@
 
-section{
+.cards{
   display: flex;
-}
-
-
-mat-card{
-  width: 300px;
-  height: auto;
-  display: flex;
-  flex-direction: column;
   align-items: center;
-  margin: 8px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.search-product{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.button-show-all{
+  margin-bottom: 12px;
 }
 
 
-
-
-img{
-  width: 200px;
-  height: auto;
-}
 
 

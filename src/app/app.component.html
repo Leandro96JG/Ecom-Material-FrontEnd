@@ -1,7 +1,5 @@
 <div *ngIf="!finishCheck()" class="loading">
-  <h4 >
-    Loading...
-  </h4>
+  <mat-progress-spinner mode="indeterminate" [diameter]="50"></mat-progress-spinner>
 </div>
 
 <router-outlet *ngIf="finishCheck()"></router-outlet>

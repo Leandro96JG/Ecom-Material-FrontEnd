@@ -6,4 +6,5 @@ export interface Product {
   byteImg:     string;
   categoryId:  number;
   img:         null|string;
+  categoryName: string;
 }

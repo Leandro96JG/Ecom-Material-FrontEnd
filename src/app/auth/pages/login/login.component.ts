@@ -21,8 +21,8 @@ export class LoginComponent implements OnInit{
   public hidePassword:string = '';
 
   public myForm:FormGroup = this.fb.group({
-    username:['',[Validators.required,Validators.minLength(4)],],
-    password:['',[Validators.required,Validators.minLength(4)],],
+    username:['admin1',[Validators.required,Validators.minLength(4)],],
+    password:['admin1',[Validators.required,Validators.minLength(4)],],
   })
 
   ngOnInit(): void {
@@ -32,9 +32,6 @@ export class LoginComponent implements OnInit{
   login(){
     const {username, password} = this.myForm.value;
     this.authService.login(username,password)
-    .pipe(
-      tap((value)=>console.log('Desde el observer',value))
-    )
     .subscribe({
       next:()=>{
         this._snackBar.open("Log in successfull",'Close',{duration:4000})

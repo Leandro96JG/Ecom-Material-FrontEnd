@@ -9,6 +9,8 @@ import { ProductComponent } from './pages/product/product.component';
 import { CategoryComponent } from './pages/category/category.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AddProductComponent } from './pages/add-product/add-product.component';
+import { CardProductComponent } from './components/card-product/card-product.component';
+import { SearchProductCardComponent } from './components/search-product-card/search-product-card.component';
 
 
 @NgModule({
@@ -17,7 +19,9 @@ import { AddProductComponent } from './pages/add-product/add-product.component';
     DashboardComponent,
     ProductComponent,
     CategoryComponent,
-    AddProductComponent
+    AddProductComponent,
+    CardProductComponent,
+    SearchProductCardComponent
   ],
   imports: [
     CommonModule,

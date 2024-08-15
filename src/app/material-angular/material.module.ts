@@ -17,6 +17,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatTableModule } from '@angular/material/table';
 import { MatDialogModule } from '@angular/material/dialog';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 
 
@@ -44,6 +45,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatDatepickerModule,
     MatDialogModule,
     MatTableModule,
+    MatAutocompleteModule
   ]
 })
 export class MaterialModule { }

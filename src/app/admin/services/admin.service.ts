@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Category } from '../interfaces/category.interface';
-import { map, Observable, of } from 'rxjs';
+import { map, Observable, of, tap } from 'rxjs';
 import { CategoryResponse } from '../interfaces/category-response.interface';
 import { Product } from '../interfaces/product-response';
 
@@ -21,18 +21,28 @@ export class AdminService {
   }
 
   getCategories():Observable<CategoryResponse[]>{
-    const categoryUrl = `${this.urlAdmin}/categories`
-    return this.http.get<CategoryResponse[]>(categoryUrl)
+    const categoriesUrl = `${this.urlAdmin}/categories`
+    return this.http.get<CategoryResponse[]>(categoriesUrl)
   }
 
   addProduct(product:any):Observable<any>{
-    const categoryUrl = `${this.urlAdmin}/add-product`
-    return this.http.post<any>(categoryUrl,product)
+    const addProductUrl = `${this.urlAdmin}/add-product`
+    return this.http.post<any>(addProductUrl,product)
   }
 
   getProducts():Observable<Product[]>{
-    const categoryUrl = `${this.urlAdmin}/products`
-    return this.http.get<Product[]>(categoryUrl)
+    const getProductsUrl = `${this.urlAdmin}/products`
+    return this.http.get<Product[]>(getProductsUrl)
+  }
+
+  getProductsByName(name:string){
+    const getProductsByName = `${this.urlAdmin}/search/${name}`;
+    return this.http.get<Product[]>(getProductsByName);
+  }
+
+  deletedProduct(id:number):Observable<boolean>{
+    const deletedProductUrl = `${this.urlAdmin}/product/${id}`;
+    return this.http.delete<boolean>(deletedProductUrl);
   }
 
 }

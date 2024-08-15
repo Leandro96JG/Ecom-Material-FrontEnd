@@ -1,0 +1,25 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title> {{product.name}} </mat-card-title>
+  </mat-card-header>
+  <img [src]="product.img" [alt]="product.name" mat-card-image>
+  <mat-card-content>
+
+    <mat-card-subtitle> {{product.description}} </mat-card-subtitle>
+    <mat-divider></mat-divider>
+    <span> Price: <b>{{product.price}}</b> </span>
+    <span> Category: <b> {{ product.categoryName }} </b> </span>
+
+    <mat-divider></mat-divider>
+
+    <div class="buttons">
+      <button class="button-card">FAQ</button>
+      <button class="button-card">
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button class="button-card">
+        <mat-icon (click)="onClick()">delete</mat-icon>
+      </button>
+    </div>
+  </mat-card-content>
+</mat-card>

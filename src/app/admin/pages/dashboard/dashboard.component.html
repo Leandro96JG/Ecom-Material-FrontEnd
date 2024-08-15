@@ -1,18 +1,10 @@
 <section>
-
-  <mat-card *ngFor="let product of products">
-    <mat-card-header>
-      <mat-card-title> {{product.name}} </mat-card-title>
-    </mat-card-header>
-    <img [src]="product.img" [alt]="product.name" mat-card-image>
-    <mat-card-content>
-      <mat-card-subtitle> {{product.description}} </mat-card-subtitle>
-      <mat-divider></mat-divider>
-      <span> Price: <b>{{product.price}}</b> </span>
-      <span> Category: </span>
-
-
-    </mat-card-content>
-  </mat-card>
+  <div class="search-product">
+    <search-product-card (productsEmit)="searchProduct($event)"></search-product-card>
+    <button class="button-show-all"  (click)="getAllProducts()" mat-button matSuffix color="primary">Mostrar Todo</button>
+  </div>
+  <div class="cards">
+    <card-product-component *ngFor="let product of products" [product]="product" (idProduct)="deletedProduct($event)" ></card-product-component>
+  </div>
 
 </section>

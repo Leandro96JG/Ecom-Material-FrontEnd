@@ -1,4 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
 
+/** ====== VARIABLES GLOBALES ======= */
+:root {
+  --shadow-button: 0px 2px 6px -3px rgba(0,0,0,0.5);
+  --shadow-button-hover: 0px 2px 6px -3px rgba(0,0,0,0.7);
+  --radius-button:30px;
+  --color-text-button:#BA005C;
+  --color-button-bg-hover:#FAE7F2;
+}
+
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { margin: 0; font-family:sans-serif , Roboto, "Helvetica Neue"; }

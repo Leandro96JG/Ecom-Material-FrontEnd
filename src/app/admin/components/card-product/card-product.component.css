@@ -1,0 +1,40 @@
+
+mat-card{
+  width: 300px;
+  height: auto;
+  align-items: center;
+  margin: 8px;
+  gap: 2rem;
+  transition: transform 0.1s ease;
+}
+mat-card:hover{
+  transform: scale(1.05);
+}
+.buttons{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 4px 2px;
+  gap: 1rem;
+}
+
+.button-card{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: var(--radius-button);
+  padding: 10px;
+  border:none;
+  box-shadow: var(--shadow-button);
+  color: var(--color-text-button);
+}
+.button-card:hover{
+  box-shadow: var(--shadow-button-hover);
+  background-color: var(--color-button-bg-hover);
+}
+
+img{
+  width: 200px;
+  height: 200px;
+  object-fit: contain;
+}

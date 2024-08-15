@@ -44,13 +44,13 @@ mat-form-field{
   justify-content: space-around;
   padding: 10px 15px;
   background-color: whitesmoke;
-  border-radius: 30px;
-  box-shadow: 0px 2px 6px -3px rgba(0,0,0,0.5);
-  color: #BA005C;
+  border-radius: var(--radius-button);
+  box-shadow: var(--shadow-button);
+  color: var(--color-text-button);
   font-weight: 500;
 }
 .file-upload-label:hover{
-  box-shadow: 0px 2px 6px -3px rgba(0,0,0,0.7);
+  box-shadow: var(--shadow-button-hover);
   background-color: #FAE7F2;
 }
 .file-upload-container{
